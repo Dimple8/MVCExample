@@ -19,15 +19,17 @@ namespace GameStore.WebUI.Controllers
             GamesListViewModel model = new GamesListViewModel
             {
                 Games = repository.Games
-                     .Where(p => category == null || p.Category == category)
-                     .OrderBy(game => game.GameId)
-                     .Skip((page - 1) * pageSize)
-                     .Take(pageSize),
+               .Where(p => category == null || p.Category == category)
+               .OrderBy(game => game.GameId)
+               .Skip((page - 1) * pageSize)
+               .Take(pageSize),
                 PagingInfo = new PagingInfo
                 {
                     CurrentPage = page,
                     ItemsPerPage = pageSize,
-                    TotalItems = repository.Games.Count()
+                    TotalItems = category == null ?
+                    repository.Games.Count() :
+                    repository.Games.Where(game => game.Category == category).Count()
                 },
                 CurrentCategory = category
             };
