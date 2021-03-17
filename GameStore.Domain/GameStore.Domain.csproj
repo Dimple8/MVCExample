@@ -72,14 +72,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Abstract\ITestRepository.cs" />
     <Compile Include="Abstract\IGameRepository.cs" />
     <Compile Include="Abstract\IOrderProcessor.cs" />
+    <Compile Include="Abstract\IСounterpartyRepository.cs" />
     <Compile Include="Concrete\EFDbContext.cs" />
     <Compile Include="Concrete\EFGameRepository.cs" />
+    <Compile Include="Concrete\EFСounterpartRepository.cs" />
+    <Compile Include="Concrete\EFTestRepository.cs" />
     <Compile Include="Concrete\EmailOrderProcessor.cs" />
     <Compile Include="Entities\Cart.cs" />
     <Compile Include="Entities\Game.cs" />
     <Compile Include="Entities\ShippingDetails.cs" />
+    <Compile Include="Entities\Test.cs" />
+    <Compile Include="Entities\Сounterparty.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

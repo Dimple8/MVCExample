@@ -19,12 +19,14 @@ namespace GameStore.WebUI.Controllers
         public PartialViewResult Menu(string category = null)
         {
             ViewBag.SelectedCategory = category;
+            var items = new string[] { "Контрагенты" };
+            IEnumerable<string> categories1 = items;
 
-            IEnumerable<string> categories = repository.Games
-                .Select(game => game.Category)
-                .Distinct()
-                .OrderBy(x => x);
-            return PartialView(categories);
+            //IEnumerable<string> categories = repository.Games
+            //    .Select(game => game.Category)
+            //    .Distinct()
+            //    .OrderBy(x => x);
+            return PartialView(categories1);
         }
     }
 }
