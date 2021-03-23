@@ -18,7 +18,7 @@ namespace GameStore.WebUI.Controllers
 
         public ViewResult Index()
         {
-            return View("Сounterparty", repository.Сounterpartys);
+            return View(repository.Сounterpartys);
         }
     }
 }

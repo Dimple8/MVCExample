@@ -131,6 +131,7 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Views\Shared\_BaseLayout.cshtml" />
     <None Include="Views\Test\Test.cshtml" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -170,7 +171,7 @@
     <Content Include="Views\Shared\_AdminLayout.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Admin\Edit.cshtml" />
-    <Content Include="Views\Сounterparty\Сounterparty.cshtml" />
+    <Content Include="Views\Сounterparty\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
