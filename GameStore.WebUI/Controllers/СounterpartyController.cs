@@ -25,17 +25,18 @@ namespace GameStore.WebUI.Controllers
         [HttpPost]
         public ActionResult Edit(Сounterpartys counterparty)
         {
-            if (ModelState.IsValid)
-            {
-                repository.SaveСounterpartys(counterparty);
-                TempData["message"] = string.Format("Изменения в игре \"{0}\" были сохранены", counterparty.name);
-                return RedirectToAction("Index");
-            }
-            else
-            {
+
+            //if (ModelState.IsValid)
+            //{
+            //    repository.SaveСounterpartys(counterparty);
+            //    TempData["message"] = string.Format("Изменения в игре \"{0}\" были сохранены", counterparty.name);
+            //    return RedirectToAction("Index");
+            //}
+            //else
+            //{
                 // Что-то не так со значениями данных
-                return View(counterparty);
-            }
+                return View("Edit", counterparty);
+            //}
         }
         public ViewResult Edit()
         {
@@ -56,6 +57,16 @@ namespace GameStore.WebUI.Controllers
                 TempData["message"] = string.Format("Игра \"{0}\" была удалена",
                     deletedСounterparty.name);
             }
+            return RedirectToAction("Index");
+        }
+        [HttpPost]
+        public ActionResult Save(Сounterpartys counterparty)
+        {
+            if (ModelState.IsValid)
+            {
+                repository.SaveСounterpartys(counterparty);
+            }
+
             return RedirectToAction("Index");
         }
     }

@@ -4,13 +4,19 @@
     ViewBag.Title = "Редактирование контрагента";
     Layout = "~/Views/Shared/_BaseLayout.cshtml";
 }
+<script type="text/javascript">
 
+    $(function () {
+        // This will make every element with the class "date-picker" into a DatePicker element
+        $('.date-picker').datepicker();
+    })
+</script>
 <div class="panel">
     <div class="panel-heading">
-        <h3>Редактирование контрагента «»</h3>
+        <h3>Редактирование контрагента «8»</h3>
     </div>
 
-    @using (Html.BeginForm("Edit", "Сounterparty"))
+    @using (Html.BeginForm("Save", "Сounterparty"))
     {
         <div class="panel-body">
             @Html.HiddenFor(m => m.id_counterparty)
@@ -18,20 +24,28 @@
             {
                 if (property.PropertyName != "id_counterparty")
                 {
-                    <div class="form-group">
-                        <label>@(property.DisplayName ?? property.PropertyName)</label>
-                        @if (property.PropertyName == "Description")
-                        {
-                            @Html.TextArea(property.PropertyName, null,
-                                new { @class = "form-control", rows = 5 })
-                        }
-                        else
-                        {
-                            @Html.TextBox(property.PropertyName, null,
-                                new { @class = "form-control" })
-                        }
-                        @Html.ValidationMessage(property.PropertyName)
+            <div class="form-group">
+                <label>@(property.DisplayName ?? property.PropertyName)</label>
+
+                @if (property.ModelType.Name == "String")
+                {
+
+            <div class="editor-field">
+                @Html.TextBox(property.PropertyName, null,
+                new { @class = "form-control" })
+                @*@Html.ValidationMessageFor(model => model.name)*@
+            </div>
+                }
+                @if (property.ModelType.Name == "DateTime")
+                {
+
+                    <div class="editor-field">
+                        @Html.EditorFor(model => model.dateDogEGAIS, new { @class = "form-control" })
+                
                     </div>
+                }
+                @Html.ValidationMessage(property.PropertyName)
+            </div>
                 }
             }
         </div>

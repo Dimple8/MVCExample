@@ -18,24 +18,26 @@ namespace GameStore.Domain.Concrete
 
         public void SaveСounterpartys(Сounterpartys counterparty)
         {
-            if (counterparty.id_counterparty == 0)
-                context.Сounterpartys.Add(counterparty);
-            else
-            {
-                Сounterpartys dbEntry = context.Сounterpartys.Find(counterparty.id_counterparty);
-                if (dbEntry != null)
+
+                if (counterparty.id_counterparty == 0)
+                    context.Сounterpartys.Add(counterparty);
+                else
                 {
-                    dbEntry.name = counterparty.name;
-                    dbEntry.inn = counterparty.inn;
-                    dbEntry.nomDogEGAIS = counterparty.nomDogEGAIS;
-                    dbEntry.nomDogKKM = counterparty.nomDogKKM;
-                    dbEntry.phoneNumber = counterparty.phoneNumber;
-                    dbEntry.type = counterparty.type;
-                    dbEntry.email = counterparty.email;
-                    dbEntry.dateDogEGAIS = counterparty.dateDogEGAIS;
+                    Сounterpartys dbEntry = context.Сounterpartys.Find(counterparty.id_counterparty);
+                    if (dbEntry != null)
+                    {
+                        dbEntry.name = counterparty.name;
+                        dbEntry.inn = counterparty.inn;
+                        dbEntry.nomDogEGAIS = counterparty.nomDogEGAIS;
+                        dbEntry.nomDogKKM = counterparty.nomDogKKM;
+                        dbEntry.phoneNumber = counterparty.phoneNumber;
+                        dbEntry.type = counterparty.type;
+                        dbEntry.email = counterparty.email;
+                        dbEntry.dateDogEGAIS = counterparty.dateDogEGAIS;
+                    }
                 }
-            }
-            context.SaveChanges();
+                context.SaveChanges();
+            
         }
 
         public Сounterpartys DeleteСounterpartys(int id_counterparty)
