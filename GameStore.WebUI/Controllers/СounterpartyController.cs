@@ -1,8 +1,5 @@
 ﻿using GameStore.Domain.Abstract;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using GameStore.Domain.Entities;
 
@@ -22,52 +19,57 @@ namespace GameStore.WebUI.Controllers
         {
             return View(repository.Сounterpartys);
         }
-        [HttpPost]
-        public ActionResult Edit(Сounterpartys counterparty)
-        {
 
-            //if (ModelState.IsValid)
-            //{
-            //    repository.SaveСounterpartys(counterparty);
-            //    TempData["message"] = string.Format("Изменения в игре \"{0}\" были сохранены", counterparty.name);
-            //    return RedirectToAction("Index");
-            //}
-            //else
-            //{
-                // Что-то не так со значениями данных
-                return View("Edit", counterparty);
-            //}
-        }
-        public ViewResult Edit()
+        public ViewResult Edit(int counterpartyId)
         {
-            return View("Edit");
+            Сounterparty counterparty = repository.Сounterpartys
+                .FirstOrDefault(c => c.id_counterparty == counterpartyId);
+            return View(counterparty);
+        }
+
+        // Перегруженная версия Edit() для сохранения изменений
+        [HttpPost]
+        public ActionResult Edit(Сounterparty counterparty)
+        {
+            if (ModelState.IsValid)
+            {
+                repository.SaveСounterparty(counterparty);
+                TempData["message"] = string.Format("Контрагент \"{0}\" сохранен", counterparty.name);
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                // Что-то не так со значениями данных
+                return View(counterparty);
+            }
         }
 
         public ViewResult Create()
         {
-            return View("Create", new Сounterpartys());
+            return View("Edit", new Сounterparty());
         }
 
         [HttpPost]
         public ActionResult Delete(int id_counterparty)
         {
-            Сounterpartys deletedСounterparty = repository.DeleteСounterpartys(id_counterparty);
+            Сounterparty deletedСounterparty = repository.DeleteСounterparty(id_counterparty);
             if (deletedСounterparty != null)
             {
-                TempData["message"] = string.Format("Игра \"{0}\" была удалена",
+                TempData["message"] = string.Format("Контрагент \"{0}\" был удален",
                     deletedСounterparty.name);
             }
             return RedirectToAction("Index");
-        }
-        [HttpPost]
-        public ActionResult Save(Сounterpartys counterparty)
-        {
-            if (ModelState.IsValid)
-            {
-                repository.SaveСounterpartys(counterparty);
-            }
+        }        
 
-            return RedirectToAction("Index");
-        }
+        //[HttpPost]
+        //public ActionResult Save(Сounterparty counterparty)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        repository.SaveСounterparty(counterparty);
+        //    }
+
+        //    return RedirectToAction("Index");
+        //}
     }
 }

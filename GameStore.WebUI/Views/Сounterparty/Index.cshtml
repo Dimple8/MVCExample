@@ -1,7 +1,7 @@
-﻿@model IEnumerable<GameStore.Domain.Entities.Сounterpartys>
+﻿@model IEnumerable<GameStore.Domain.Entities.Сounterparty>
 
 @{ ViewBag.Title = "Сounterparty";
-                Layout = "~/Views/Shared/_BaseLayout.cshtml"; }
+    Layout = "~/Views/Shared/_BaseLayout.cshtml"; }
 
 <div class="panel panel-default">
     <div class="panel-heading">
@@ -22,46 +22,27 @@
             </tr>
             @foreach (var item in Model)
             {
-<tr>
-    <td class="text-right">@item.id_counterparty</td>
-    <td class="text-right">@item.nomDogKKM</td>
-    <td class="text-right">@item.name</td>
-    <td class="text-right">@item.type</td>
-    <td class="text-right">@item.inn</td>
-    <td class="text-right">@item.nomDogEGAIS</td>
-    <td class="text-right">@item.dateDogEGAIS</td>
-    <td class="text-right">@item.phoneNumber</td>
-    <td class="text-right">@item.email</td>
-    <td class="text-center">
-        @using (Html.BeginForm("Delete", "Сounterparty"))
-        {
-@Html.Hidden("id_counterparty", item.id_counterparty)
+        <tr>
+            <td class="text-right">@item.id_counterparty</td>
+            <td class="text-right">@item.nomDogKKM</td>
+            <td>@Html.ActionLink(item.name, "Edit", new { item.id_counterparty })</td>
+            @*<td class="text-right">@item.name</td>*@
+            <td class="text-right">@item.type</td>
+            <td class="text-right">@item.inn</td>
+            <td class="text-right">@item.nomDogEGAIS</td>
+            <td class="text-right">@item.dateDogEGAIS</td>
+            <td class="text-right">@item.phoneNumber</td>
+            <td class="text-right">@item.email</td>
+            <td class="text-center">
+                @using (Html.BeginForm("Delete", "Сounterparty"))
+                {
+                    @Html.Hidden("id_counterparty", item.id_counterparty)
                     <input type="submit"
                            class="btn btn-default btn-xs"
                            value="Удалить" />}
-    </td>
-    <td class="text-center">
-
-        @using (Html.BeginForm("Edit", "Сounterparty"))
-        {
-    @Html.Hidden("id_counterparty", item.id_counterparty)
-                        @Html.Hidden("nomDogKKM", item.nomDogKKM)
-                                            @Html.Hidden("name", item.name)
-                                                                @Html.Hidden("type", item.type)
-                                                                                    @Html.Hidden("inn", item.inn)
-                                                                                                        @Html.Hidden("nomDogEGAIS", item.nomDogEGAIS)
-                                                                                                                            @Html.Hidden("dateDogEGAIS", item.dateDogEGAIS)
-                                                                                                                                                @Html.Hidden("phoneNumber", item.phoneNumber)
-                                                                                                                                                                    @Html.Hidden("email", item.email)
-                                                                                                                                                                                        <input type="submit" class="btn btn-default btn-xs" value="Редактировать" />}
-
-
-
-
-
-    </td>
-</tr>
-}
+            </td>
+        </tr>
+            }
         </table>
         <div class="panel-footer">
             @Html.ActionLink("Добавить контрагента", "Create", null,

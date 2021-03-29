@@ -1,4 +1,4 @@
-﻿@model GameStore.Domain.Entities.Сounterpartys
+﻿@model GameStore.Domain.Entities.Сounterparty
 
 @{
     ViewBag.Title = "Редактирование контрагента";
@@ -16,7 +16,7 @@
         <h3>Редактирование контрагента «8»</h3>
     </div>
 
-    @using (Html.BeginForm("Save", "Сounterparty"))
+    @using (Html.BeginForm("Edit", "Сounterparty"))
     {
         <div class="panel-body">
             @Html.HiddenFor(m => m.id_counterparty)

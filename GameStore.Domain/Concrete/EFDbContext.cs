@@ -7,6 +7,6 @@ namespace GameStore.Domain.Concrete
     {
         public DbSet<Game> Games { get; set; }
         public DbSet<Test> Tests { get; set; }
-        public DbSet<Сounterpartys> Сounterpartys { get; set; }
+        public DbSet<Сounterparty> Сounterpartys { get; set; }
     }
 }

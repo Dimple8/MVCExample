@@ -9,8 +9,8 @@ namespace GameStore.Domain.Abstract
 {
     public interface IСounterpartyRepository
     {
-        IEnumerable<Сounterpartys> Сounterpartys { get; }
-        void SaveСounterpartys(Сounterpartys counterparty);
-        Сounterpartys DeleteСounterpartys(int id_counterparty);
+        IEnumerable<Сounterparty> Сounterpartys { get; }
+        void SaveСounterparty(Сounterparty counterparty);
+        Сounterparty DeleteСounterparty(int id_counterparty);
     }
 }

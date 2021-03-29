@@ -11,19 +11,19 @@ namespace GameStore.Domain.Concrete
     public class EFСounterpartyRepository : IСounterpartyRepository
     {
         EFDbContext context = new EFDbContext();
-        public IEnumerable<Сounterpartys> Сounterpartys
+        public IEnumerable<Сounterparty> Сounterpartys
         {
             get { return context.Сounterpartys; }
         }
 
-        public void SaveСounterpartys(Сounterpartys counterparty)
+        public void SaveСounterparty(Сounterparty counterparty)
         {
 
                 if (counterparty.id_counterparty == 0)
                     context.Сounterpartys.Add(counterparty);
                 else
                 {
-                    Сounterpartys dbEntry = context.Сounterpartys.Find(counterparty.id_counterparty);
+                    Сounterparty dbEntry = context.Сounterpartys.Find(counterparty.id_counterparty);
                     if (dbEntry != null)
                     {
                         dbEntry.name = counterparty.name;
@@ -40,9 +40,9 @@ namespace GameStore.Domain.Concrete
             
         }
 
-        public Сounterpartys DeleteСounterpartys(int id_counterparty)
+        public Сounterparty DeleteСounterparty(int id_counterparty)
         {
-            Сounterpartys dbEntry = context.Сounterpartys.Find(id_counterparty);
+            Сounterparty dbEntry = context.Сounterpartys.Find(id_counterparty);
             if (dbEntry != null)
             {
                 context.Сounterpartys.Remove(dbEntry);

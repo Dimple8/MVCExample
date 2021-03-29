@@ -1,10 +1,12 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
 using System;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace GameStore.Domain.Entities
 {
-    public class Сounterpartys
+    [Table("Сounterpartys")]
+    public class Сounterparty
     {
         [HiddenInput(DisplayValue = false)]
         [Key]
@@ -21,7 +23,7 @@ namespace GameStore.Domain.Entities
         [Display(Name = "Тип")]
         public string type { get; set; }
 
-        [RegularExpression(@"[0-9]", ErrorMessage = "ИНН должен состоять из цифр")]
+        [RegularExpression(@"^\d{10}(\d{2})?$", ErrorMessage = "ИНН должен состоять из 10(юр. лицо) или 12(физ. лицо) цифр")]
         [Display(Name = "ИНН")]
         public string inn { get; set; }
 
@@ -36,7 +38,7 @@ namespace GameStore.Domain.Entities
         [Display(Name = "Номер телефона")]
         public string phoneNumber { get; set; }
 
-        [RegularExpression(@"[a-zA-Z@a-zA-Z.]", ErrorMessage = "Введите корректный email")]
+        [RegularExpression(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$", ErrorMessage = "Введите корректный email")]
         [Display(Name = "email")]
         public string email { get; set; }
 
