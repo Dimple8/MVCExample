@@ -20,10 +20,10 @@ namespace GameStore.WebUI.Controllers
             return View(repository.Сounterpartys);
         }
 
-        public ViewResult Edit(int counterpartyId)
+        public ViewResult Edit(int id_counterparty)
         {
             Сounterparty counterparty = repository.Сounterpartys
-                .FirstOrDefault(c => c.id_counterparty == counterpartyId);
+                .FirstOrDefault(c => c.id_counterparty == id_counterparty);
             return View(counterparty);
         }
 

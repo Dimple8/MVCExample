@@ -42,7 +42,10 @@ namespace GameStore.Domain.Entities
         [Display(Name = "email")]
         public string email { get; set; }
 
-
+        public Сounterparty()
+        {
+            dateDogEGAIS = DateTime.Today;
+        }
     }
 }
 
